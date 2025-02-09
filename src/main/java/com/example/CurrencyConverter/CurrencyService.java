@@ -7,7 +7,7 @@ import com.example.CurrencyConverter.ConversionResponse;
 @Service
 public class CurrencyService {
 
-    // Hardcoded exchange rates for simplicity (this can be replaced with an external API call)
+    
     private static final Map<String, Map<String, Double>> exchangeRates = new HashMap<>();
 
     static {
@@ -27,13 +27,12 @@ public class CurrencyService {
         exchangeRates.put("GBP", gbpRates);
     }
 
-    // Method to get exchange rates for a given base currency
     public Map<String, Double> getExchangeRates(String base) {
         // If no exchange rates are found for the base currency, return an empty map
         return exchangeRates.getOrDefault(base, new HashMap<>());
     }
 
-    // Method to convert currency
+  
     public double convertCurrency(ConversionResponse request) {
         Map<String, Double> rates = getExchangeRates(request.getFrom());
         Double rate = rates.get(request.getTo());
